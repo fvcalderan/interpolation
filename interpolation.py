@@ -1,18 +1,17 @@
-__author__ =    'Felipe V. Calderan'
-__copyright__ = 'Copyright (C) 2020 Felipe V. Calderan'
-__license__ =   'BSD 3-Clause "New" or "Revised" License'
-__version__=    '1.0'
-
-import numpy as np
-import matplotlib.pyplot as plt
-import sys
 from sympy import *
+import sys
+import matplotlib.pyplot as plt
+import numpy as np
+__author__ = 'Felipe V. Calderan'
+__copyright__ = 'Copyright (C) 2020 Felipe V. Calderan'
+__license__ = 'BSD 3-Clause "New" or "Revised" License'
+__version__ = '1.0'
 
 
 def check_args():
     """check correctnes of the arguments and get them"""
     if len(sys.argv) != 4:
-        print('\nUsage: python3 interpolate.py data precision output_name\n')
+        print('\nUsage: python3 interpolation.py data.csv precision output_name\n')
         exit()
     return sys.argv[1], float(sys.argv[2]), sys.argv[3]
 
@@ -30,15 +29,15 @@ def gen_expr_point(point, x_axis):
     dstr = ''
     for i, v in enumerate(x_axis):
         if i != point:
-            nstr = nstr + '(x-'+str(v)+')'+'*'
-            dstr = dstr + '('+str(x_axis[point])+'-'+str(v)+')*'
+            nstr = nstr + '(x-' + str(v) + ')' + '*'
+            dstr = dstr + '(' + str(x_axis[point]) + '-' + str(v) + ')*'
 
-    return '('+nstr[:-1]+')/('+dstr[:-1]+')'
+    return '(' + nstr[:-1] + ')/(' + dstr[:-1] + ')'
 
 
 def gen_final_expr(x_axis, y_axis):
     """generate final lagrange interpolation"""
-    expr=''
+    expr = ''
     for i, v in enumerate(y_axis):
         this_point = gen_expr_point(i, x_axis)
         expr = expr + str(v) + '*' + this_point + '+'
@@ -58,13 +57,13 @@ def gen_new_axis(x_axis, expr, precision):
 def gen_out_file(expr, x_axis, y_axis, new_x, new_y, out_name):
     """output equation and plot to files"""
     # save equation
-    tfile = open(out_name+'_LaTeX.txt', 'w')
+    tfile = open(out_name + '_LaTeX.txt', 'w')
     tfile.write(latex(expr))
     tfile.close()
 
-    # save plot 
+    # save plot
     plt.plot(x_axis, y_axis, 'o', new_x, new_y, '-')
-    plt.savefig(out_name, dpi = 400)
+    plt.savefig(out_name, dpi=400)
 
 
 def main():
