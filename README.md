@@ -1,5 +1,18 @@
 # Interpolation
 
+```
+  __                _     _                      
+ / _|_   _____ __ _| | __| | ___ _ __ __ _ _ __  
+| |_\ \ / / __/ _` | |/ _` |/ _ \ '__/ _` | '_ \ 
+|  _|\ V / (_| (_| | | (_| |  __/ | | (_| | | | |
+|_|   \_/ \___\__,_|_|\__,_|\___|_|  \__,_|_| |_|
+
+BSD 3-Clause License
+Copyright (c) 2020, Felipe V. Calderan
+All rights reserved.
+See the full license inside LICENSE.txt file
+```
+
 Generate simple plots and Lagrange Polynomials for interpolations of given sets of points.
 
 See https://en.wikipedia.org/wiki/Lagrange_polynomial for reference on what those polynomials are.
